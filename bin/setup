@@ -5,6 +5,12 @@ case "$1" in
     version="$2"
 esac
 
+pushd "$OPENSHIFT_DATA_DIR"
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz
+tar -zxf jdk-8u5-linux-x64.tar.gz
+rm -f jdk-8u5-linux-x64.tar.gz
+popd
+
 SYSTEM_TOMCAT_DIR="/opt/apache-tomcat-${version}"
 
 # if SYSTEM_TOMCAT_DIR doesn't exists change it, to use a local tomcat
